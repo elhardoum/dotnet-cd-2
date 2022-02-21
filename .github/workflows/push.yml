@@ -16,7 +16,7 @@ jobs:
         PASS: ${{ secrets.DOCKER_PASSWORD }}
       run: docker login -u "$USER" -p "$PASS"
     - name: env setup
-      run: touch .env
+      run: test -f .env || cp .env.sample .env
     - name: build images
       run: docker-compose build --no-cache
     - name: docker push
