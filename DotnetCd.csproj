@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <IsTestProject>false</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="System.Data.SqlClient" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Watch Remove="mssql\**" />
+    <Watch Remove=".git\**" />
+    <Watch Remove="db\**" />
+    <Watch Remove="bin\**" />
+    <Watch Remove="obj\**" />
+  </ItemGroup>
+</Project>

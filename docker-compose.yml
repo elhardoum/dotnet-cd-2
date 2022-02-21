@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  web:
+    image: elhardoum/dotnet-cd-demo:latest
+    restart: always
+    build:
+      context: .
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/usr/src/app
+    env_file: .env
+  
+  mssql:
+    image: elhardoum/dotnet-cd-demo-db:latest
+    volumes:
+      - ./db:/usr/src/app
+      - ./mssql:/var/opt/mssql/data
+    working_dir: /usr/src/app
+    env_file: .env
+    restart: always
+    build:
+      context: .
+      dockerfile: db/Dockerfile

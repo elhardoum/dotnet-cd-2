@@ -1,0 +1,42 @@
+@{
+    var user = (DotnetCd.Models.User)Context.Items["user"];
+
+}<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DotnetCd</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/tailwindcss@0.7.4/dist/tailwind.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic" />
+    <style type="text/css" media="all">
+        body {font-size:initial;width:100%;font-family:'Open Sans','Roboto',Nunito,Arial,Helvetica,sans-serif}
+    </style>
+</head>
+<body class="h-full w-full">
+    <div class="h-full w-full">
+        <main class="flex flex-col h-full items-center w-full">
+            <div class="py-5 text-white w-full bg-teal-dark">
+                <div class="flex flex-wrap items-center justify-between m-auto max-w-xl px-2 w-full">
+                    <a asp-controller="Home" asp-action="Index" class="hover:underline no-underline text-white">
+                        @using Microsoft.Extensions.Configuration
+                        @inject IConfiguration Configuration
+                        <span class="text-lg">@Configuration["Site Name"]</span>
+                    </a>
+
+                    <nav id="main" class="flex items-center text-sm">
+                        <a asp-controller="Members" asp-action="Index" class="hover:underline no-underline text-white">Members</a>
+                    </nav>
+                </div>
+            </div>
+        
+            <article class="flex-1 w-full bg-white -flex -flex-col">
+                <div class="flex h-full m-auto max-w-xl px-2 py-5 table w-full" id="content">
+                    @RenderBody()
+                </div>
+            </article>                
+        </main>
+    </div>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
